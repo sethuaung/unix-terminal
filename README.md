@@ -7,3 +7,5 @@ This is not Emulator, you will not be able to compile and run C++ programs. Inst
 This can be nice way to learn how Unix system works if you read the code. But also you will be able to play with terminal based Linux in browser.
 
 The system will run completely in Browser, no Backend. It will be based on FileSystem Images.
+
+## Creditsto to [Jakub T. Jankiewicz](https://jcubic.pl/)
