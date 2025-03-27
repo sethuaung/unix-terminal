@@ -1,0 +1,28 @@
+name: Deploy
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: "deps"
+        run: "npm ci"
+      - name: "build"
+        run: "make"
+      - name: upload
+        uses: appleboy/scp-action@v0.1.2
+        with:
+          source: ./dist/*
+          strip_components: 1
+          target: '~/websites/terminal/fake/'
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSH_KEY }}
